@@ -1,0 +1,42 @@
+{% extends 'etudiant/base.html'%}
+{% block content%}
+<h4>ajouter un nouvel étudiant</h4>
+
+<form action="" method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <button type="submit">sumettre</button>
+</form>
+<div>
+    <h4>les étudiants enregistré dans la base de donnée!</h4>
+    {%if etudiant %}
+        <table>
+            <thead>
+                <tr>
+                    <th>identifiant</th>
+                    <th>nom</th>
+                    <th>email</th>
+                    <th>mot de passe</th>
+                    <th>les modificateurs</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for etud in etudiant%}
+                <tr>
+                    <td>{{etud.id}}</td>
+                    <td>{{etud.name}}</td>
+                    <td>{{etud.email}}</td>
+                    <td>{{etud.password}}</td>
+                    <td>
+                        <a href="">modifer</a> 
+                        <a href="">supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {%else%}
+        <h4>pas d'enregistrement</h4>
+    {%endif%}
+</div>
+{%endblock content%}
