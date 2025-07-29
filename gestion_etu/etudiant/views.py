@@ -18,6 +18,7 @@ def show(request):
             fm= Student_registrations()
     else:
         fm =Student_registrations() 
+    # recuperation et affichage des donnees de la base de donnee
     student= User.objects.all()
     return render(request, 'etudiant/affichage.html', {'form':fm, 'etudiant':student})
 
