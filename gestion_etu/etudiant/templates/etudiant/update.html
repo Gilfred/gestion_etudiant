@@ -1,0 +1,11 @@
+{% extends 'etudiant/base.html'%}
+{% block content%}
+    <h4>mise a jour des informations </h4>
+     <div>
+        <form action="" method="POST"> 
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type=submit>mise a jour</button>
+        </form>
+     </div>
+{%endblock content%}

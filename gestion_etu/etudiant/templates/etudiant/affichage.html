@@ -28,7 +28,7 @@
                     <td>{{etud.email}}</td>
                     <td>{{etud.password}}</td>
                     <td>
-                        <a href="">modifer</a> 
+                        <a href="{% url 'mise_a_jour' etud.id %}">modifer</a> 
                         <form action="{% url 'suppression_donnee' etud.id %}" method="post" >
                             {% csrf_token %}
                             <button type="submit">supprimer</button>

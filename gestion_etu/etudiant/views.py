@@ -28,3 +28,15 @@ def delete(request, id):
         pi = User.objects.get(pk= id)
         pi.delete()
         return HttpResponseRedirect('/enregistrement/')
+    
+#mise a jour des informations d'un user    
+def update(request, id):
+    if(request.method == 'POST'):
+        pi= User.objects.get(pk=id)
+        fm= Student_registrations(request.POST , instance=pi)
+        if fm.is_valid():
+            fm.save()
+    else:
+        pi = User.objects.get(pk=id)
+        fm= Student_registrations(instance=id)    
+    return render(request, 'etudiant/update.html', {'form':fm})
