@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from .forms import Student_registrations
 from .models import User
 
@@ -20,3 +20,10 @@ def show(request):
         fm =Student_registrations() 
     student= User.objects.all()
     return render(request, 'etudiant/affichage.html', {'form':fm, 'etudiant':student})
+
+#function for destroy the data in database
+def delete(request, id):
+    if request.method == 'POST':
+        pi = User.objects.get(pk= id)
+        pi.delete()
+        return HttpResponseRedirect('/enregistrement/')
