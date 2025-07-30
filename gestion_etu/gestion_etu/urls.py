@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('enregistrement/',views.show, name = "affichage"),
     path('suppression/<int:id>', views.delete, name ="suppression_donnee"),
-    path('<int:id>/', views.update, name="mise_a_jour"),
+    path('maj/<int:id>/', views.update, name="mise_a_jour"),
 ]

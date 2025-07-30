@@ -31,12 +31,12 @@ def delete(request, id):
     
 #mise a jour des informations d'un user    
 def update(request, id):
-    if(request.method == 'POST'):
-        pi= User.objects.get(pk=id)
-        fm= Student_registrations(request.POST , instance=pi)
+    pi = User.objects.get(pk=id)
+    if request.method == 'POST':
+        fm = Student_registrations(request.POST, instance=pi)
         if fm.is_valid():
             fm.save()
+            return HttpResponseRedirect('/enregistrement/')
     else:
-        pi = User.objects.get(pk=id)
-        fm= Student_registrations(instance=id)    
+        fm = Student_registrations(instance=pi)    
     return render(request, 'etudiant/update.html', {'form':fm})
